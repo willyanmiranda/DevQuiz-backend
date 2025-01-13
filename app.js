@@ -1,6 +1,16 @@
 const express = require('express');
-const app = express();
+var cors = require("cors");
+
 require('dotenv').config();
+
+const app = express();
+app.use(
+    cors({
+      origin: "*",
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+    })
+);
 
 const { MongoClient } = require('mongodb');
 
